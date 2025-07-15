@@ -1,0 +1,1400 @@
+{
+    "info": {
+        "name": "Tawasol API",
+        "_postman_id": "tawasol-2025-07-13T20:04:34.002566",
+        "description": "Collection for Tawasol API endpoints",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Login Logs",
+            "item": [
+                {
+                    "name": "List Login Logs",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/login-logs",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "login-logs"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Show Login Log",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/login-logs\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "login-logs",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Files",
+            "item": [
+                {
+                    "name": "List Files",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/files",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "files"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Show File",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/files\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "files",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete File",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/files\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "files",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Calls",
+            "item": [
+                {
+                    "name": "List Calls",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/calls",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "calls"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Show Call",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/calls\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "calls",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Call",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/calls\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "calls",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Settings",
+            "item": [
+                {
+                    "name": "My Settings",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/settings",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "settings"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Setting",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/settings\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "settings",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Audit Logs",
+            "item": [
+                {
+                    "name": "List Audit Logs",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/audit-logs",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "audit-logs"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Show Audit Log",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/audit-logs\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "audit-logs",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Messages",
+            "item": [
+                {
+                    "name": "Get Messages",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/messages\/{chatId}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "messages",
+                                "{chatId}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Send Message",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/messages\/{chatId}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "messages",
+                                "{chatId}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Show Message",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/messages\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "messages",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Message",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/messages\/{id}",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "messages",
+                                "{id}"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Mark Message Read",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/messages\/{id}\/read",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "messages",
+                                "{id}",
+                                "read"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Search Messages",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/messages\/{chatId}\/search?q=test",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "messages",
+                                "{chatId}",
+                                "search?q=test"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/auth\/register",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "register"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/auth\/login",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Refresh Token",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/auth\/refresh",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "refresh"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/auth\/logout",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "logout"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Me",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/auth\/me",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "me"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "List Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"\",\n  \"full_name\": \"\",\n  \"password\": \"\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Show User",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "1"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"full_name\": \"Updated Name\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Activate User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users\/1\/activate",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "1",
+                                "activate"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Deactivate User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users\/1\/deactivate",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "1",
+                                "deactivate"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Search Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/users\/search?q=example",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "search?q=example"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Contacts",
+            "item": [
+                {
+                    "name": "List Contacts",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/contacts",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "contacts"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Contact",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/contacts",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "contacts"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"contact_user_id\": 1\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Show Contact",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/contacts\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "contacts",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Contact",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/contacts\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "contacts",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Search Contacts",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/contacts\/search?q=example",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "contacts",
+                                "search?q=example"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Chats",
+            "item": [
+                {
+                    "name": "List Chats",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Chat",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"is_group\": true,\n  \"group_name\": \"Test\",\n  \"member_ids\": [\n    1,\n    2\n  ]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Show Chat",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Chat",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"group_name\": \"Updated Group\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Chat",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Member",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1\/add-member",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1",
+                                "add-member"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 2\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Remove Member",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1\/remove-member",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1",
+                                "remove-member"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 2\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Leave Group",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1\/leave",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1",
+                                "leave"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Chat Members",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/1\/members",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "1",
+                                "members"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "My Groups",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_TOKEN_HERE"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000\/api\/v1\/chats\/my\/groups",
+                            "host": [
+                                "http://localhost:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "chats",
+                                "my",
+                                "groups"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

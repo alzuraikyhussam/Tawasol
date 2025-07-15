@@ -1,0 +1,166 @@
+-- إنشاء قاعدة البيانات
+CREATE DATABASE TawasolDB;
+GO
+
+USE TawasolDB;
+GO
+
+-- جدول الإدارات
+CREATE TABLE departments (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  name NVARCHAR(100) NOT NULL,
+  created_at DATETIME DEFAULT GETDATE()
+);
+
+-- جدول المستخدمين
+CREATE TABLE users (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  department_id BIGINT,
+  username NVARCHAR(50) UNIQUE NOT NULL,
+  full_name NVARCHAR(100) NOT NULL,
+  password_hash NVARCHAR(255) NOT NULL,
+  is_active BIT DEFAULT 1,
+  is_online BIT DEFAULT 0,
+  last_seen DATETIME,
+  profile_image_url NVARCHAR(MAX),
+  created_at DATETIME DEFAULT GETDATE(),
+  updated_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+
+-- جدول جهات الاتصال
+CREATE TABLE contacts (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  owner_id BIGINT NOT NULL,
+  contact_user_id BIGINT NOT NULL,
+  created_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (owner_id) REFERENCES users(id),
+  FOREIGN KEY (contact_user_id) REFERENCES users(id)
+);
+
+-- جدول المحادثات
+CREATE TABLE chats (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  department_id BIGINT,
+  is_group BIT DEFAULT 0,
+  group_name NVARCHAR(100),
+  group_description NVARCHAR(MAX),
+  created_by BIGINT,
+  created_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (created_by) REFERENCES users(id),
+  FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+
+-- جدول أعضاء المحادثات
+CREATE TABLE chat_members (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  chat_id BIGINT NOT NULL,
+  user_id BIGINT NOT NULL,
+  is_admin BIT DEFAULT 0,
+  is_muted BIT DEFAULT 0,
+  joined_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (chat_id) REFERENCES chats(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- جدول نوع الرسالة
+CREATE TABLE message_types (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  type NVARCHAR(10) NOT NULL,
+  created_at DATETIME DEFAULT GETDATE()
+);
+
+-- جدول الملفات المرفقة
+CREATE TABLE files (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  uploaded_by BIGINT NOT NULL,
+  file_name NVARCHAR(255) NOT NULL,
+  file_path NVARCHAR(MAX) NOT NULL,
+  file_size BIGINT,
+  uploaded_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (uploaded_by) REFERENCES users(id)
+);
+
+-- جدول الرسائل
+CREATE TABLE messages (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  chat_id BIGINT NOT NULL,
+  sender_id BIGINT NOT NULL,
+  message_type_id BIGINT NOT NULL,
+  file_id BIGINT NOT NULL,
+  content NVARCHAR(MAX),
+  file_url NVARCHAR(MAX),
+  created_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (chat_id) REFERENCES chats(id),
+FOREIGN KEY (message_type_id) REFERENCES message_types(id),
+  FOREIGN KEY (sender_id) REFERENCES users(id),
+ FOREIGN KEY (file_id) REFERENCES files(id),
+ // CONSTRAINT chk_message_type CHECK (message_type IN ('Text', 'Image', 'File'))
+);
+
+-- جدول حالة الرسائل
+CREATE TABLE message_status (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  message_id BIGINT NOT NULL,
+  user_id BIGINT NOT NULL,
+  status NVARCHAR(20) NOT NULL DEFAULT 'Sent',
+  updated_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (message_id) REFERENCES messages(id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  CONSTRAINT chk_status CHECK (status IN ('Sent', 'Delivered', 'Read'))
+);
+
+-- جدول سجل الدخول
+CREATE TABLE login_logs (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  login_time DATETIME DEFAULT GETDATE(),
+  logout_time DATETIME,
+  ip_address NVARCHAR(50),
+  device_info NVARCHAR(255),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- جدول إعدادات المستخدم
+CREATE TABLE user_settings (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  setting_key NVARCHAR(100) NOT NULL,
+  setting_value NVARCHAR(255),
+  updated_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- جدول المكالمات الصوتية والفيديو
+CREATE TABLE calls (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  caller_id BIGINT NOT NULL,
+  receiver_id BIGINT NOT NULL,
+  call_type NVARCHAR(10) NOT NULL,
+  status NVARCHAR(20) NOT NULL DEFAULT 'Ringing',
+  started_at DATETIME,
+  ended_at DATETIME,
+  duration_seconds INT DEFAULT 0,
+  created_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (caller_id) REFERENCES users(id),
+  FOREIGN KEY (receiver_id) REFERENCES users(id),
+  CONSTRAINT chk_call_type CHECK (call_type IN ('Voice', 'Video')),
+  CONSTRAINT chk_call_status CHECK (status IN ('Ringing', 'Missed', 'Completed', 'Declined'))
+);
+
+-- جدول سجل الأحداث
+CREATE TABLE audit_logs (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  event_type NVARCHAR(50) NOT NULL,
+  event_details NVARCHAR(MAX),
+  device_info NVARCHAR(255),
+  ip_address NVARCHAR(50),
+  created_at DATETIME DEFAULT GETDATE(),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  CONSTRAINT chk_event_type CHECK (event_type IN (
+    'Login', 'Logout', 'StatusChange', 'CallStarted',
+    'CallEnded', 'MessageDeleted', 'FileUploaded',
+    'ProfileUpdated', 'PasswordChanged', 'Other'
+  ))
+);
