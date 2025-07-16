@@ -95,7 +95,11 @@ CREATE TABLE messages (
 FOREIGN KEY (message_type_id) REFERENCES message_types(id),
   FOREIGN KEY (sender_id) REFERENCES users(id),
  FOREIGN KEY (file_id) REFERENCES files(id),
+<<<<<<< HEAD
  -- CONSTRAINT chk_message_type CHECK (message_type IN ('Text', 'Image', 'File'))
+=======
+ // CONSTRAINT chk_message_type CHECK (message_type IN ('Text', 'Image', 'File'))
+>>>>>>> 0d38a6080ed4ac1234013c3eb42b3af133a4a3f7
 );
 
 -- جدول حالة الرسائل
