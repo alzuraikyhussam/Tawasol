@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Message extends Model
+{
+    public $timestamps = false;
+
+    protected $fillable = [
+        'chat_id',
+        'sender_id',
+        'message_type_id',
+        'content',
+        'file_url',
+        'created_at',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
+    public function chat(): BelongsTo
+    {
+        return $this->belongsTo(Chat::class);
+    }
+
+    public function sender(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    public function messageType(): BelongsTo
+    {
+        return $this->belongsTo(MessageType::class);
+    }
+
+    // حالة الرسائل المتعددة
+    public function statuses(): HasMany
+    {
+        return $this->hasMany(MessageStatus::class);
+    }
+}
