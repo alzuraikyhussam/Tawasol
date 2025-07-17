@@ -72,6 +72,7 @@ Route::prefix('v1')->group(function () {
             Route::post('/search/{chatId}', [MessagesController::class, 'search']);
         });
 
+<<<<<<< HEAD
         Route::apiResource('message-status', MessageStatusController::class);
         Route::patch('message-status/statuses/bulk-update', [MessageStatusController::class, 'bulkUpdate']);
 
@@ -83,6 +84,25 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('calls', CallsController::class);
         Route::patch('calls/{id}/status', [CallsController::class, 'updateStatus']);
         Route::get('calls/history/list', [CallsController::class, 'history']);
+=======
+        Route::prefix('message-status')->group(function () {
+            // تحديث حالات متعددة
+            Route::patch('/statuses/bulk-update', [MessageStatusController::class, 'bulkUpdate']);
+        });
+
+        Route::prefix('files')->group(function () {
+            Route::get('', [FilesController::class, 'index']);
+            Route::post('/upload-file', [FilesController::class, 'store']);
+            Route::get('/{id}', [FilesController::class, 'show']);
+            Route::delete('/{id}', [FilesController::class, 'destroy']);
+        });
+
+        Route::prefix('calls')->group(function () {
+            Route::apiResource('', CallsController::class);
+            Route::patch('/{id}/status', [CallsController::class, 'updateStatus']);
+            Route::get('/history/list', [CallsController::class, 'history']);
+        });
+>>>>>>> e1ba519c8197441cbae35fb4f353df82f8acba96
 
         Route::prefix('login-logs')->group(function () {
             Route::get('', [LoginLogsController::class, 'index']);
@@ -97,8 +117,15 @@ Route::prefix('v1')->group(function () {
             Route::get('/{id}', [AuditLogsController::class, 'show']);
         });
 
+<<<<<<< HEAD
         Route::apiResource('settings', UserSettingsController::class);
         Route::post('settings/upsert', [UserSettingsController::class, 'upsertSetting']);
+=======
+        Route::prefix('settings')->group(function () {
+            Route::apiResource('', UserSettingsController::class);
+            Route::post('/upsert', [UserSettingsController::class, 'upsertSetting']);
+        });
+>>>>>>> e1ba519c8197441cbae35fb4f353df82f8acba96
 
     });
 
