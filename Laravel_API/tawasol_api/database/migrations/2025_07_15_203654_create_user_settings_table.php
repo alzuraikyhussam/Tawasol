@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('setting_key', 100);
             $table->string('setting_value', 255)->nullable();
             $table->timestamp('updated_at')->useCurrent();

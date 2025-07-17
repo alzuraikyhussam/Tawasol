@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('is_group')->default(false);
             $table->string('group_name', 100)->nullable();
             $table->text('group_description')->nullable();
-            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamp('created_at')->useCurrent();
         });
     }

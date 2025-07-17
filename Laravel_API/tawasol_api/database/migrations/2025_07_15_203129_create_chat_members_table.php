@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('chat_members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chat_id')->constrained('chats')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('chat_id')->constrained('chats');
+            $table->foreignId('user_id')->constrained('users');
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_muted')->default(false);
             $table->timestamp('joined_at')->useCurrent();

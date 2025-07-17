@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('message_statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('message_id')->constrained('messages')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('message_id')->constrained('messages');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('status', 20)->default('Sent');
             $table->timestamp('updated_at')->useCurrent();
         });

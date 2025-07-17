@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chat_id')->constrained('chats')->cascadeOnDelete();
-            $table->foreignId('sender_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('message_type_id')->constrained('message_types')->cascadeOnDelete();
+            $table->foreignId('chat_id')->constrained('chats');
+            $table->foreignId('sender_id')->constrained('users');
+            $table->foreignId('message_type_id')->constrained('message_types');
+            $table->foreignId('file_id')->constrained('files');
             $table->text('content')->nullable();
             $table->text('file_url')->nullable();
             $table->timestamp('created_at')->useCurrent();

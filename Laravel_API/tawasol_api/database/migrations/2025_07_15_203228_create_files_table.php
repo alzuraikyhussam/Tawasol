@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('uploaded_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('uploaded_by')->constrained('users');
             $table->string('file_name', 255);
             $table->text('file_path');
             $table->bigInteger('file_size')->nullable();
