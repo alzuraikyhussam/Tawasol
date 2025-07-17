@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\AuditLogger;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use App\Traits\ApiResponseTrait;
 
 class AuthController extends Controller
 {
+
     use ApiResponseTrait;
 
     /**
@@ -20,26 +21,33 @@ class AuthController extends Controller
     {
         return DB::transaction(function () use ($request) {
             $validated = $request->validate([
-                'username'      => 'required|string|max:50|unique:users,username',
-                'full_name'     => 'required|string|max:100',
-                'password'      => 'required|string|min:6|confirmed',
+                'username' => 'required|string|max:50|unique:users,username',
+                'full_name' => 'required|string|max:100',
+                'password' => 'required|string|min:6|confirmed',
                 'department_id' => 'nullable|exists:departments,id',
             ]);
 
             $user = User::create([
-                'username'      => $validated['username'],
-                'full_name'     => $validated['full_name'],
+                'username' => $validated['username'],
+                'full_name' => $validated['full_name'],
                 'password_hash' => Hash::make($validated['password']),
                 'department_id' => $validated['department_id'] ?? null,
-                'is_active'     => true,
+                'is_active' => true,
             ]);
 
             $token = $user->createToken('auth_token')->plainTextToken;
 
+            AuditLogger::log(
+                $user->id,
+                'Register',
+                'تم التسجيل بنجاح'
+            );
+
             return $this->success([
-                'user'  => $user,
+                'user' => $user,
                 'token' => $token,
             ], 'تم التسجيل بنجاح', 201);
+
         });
     }
 
@@ -70,10 +78,17 @@ class AuthController extends Controller
             'last_seen' => now(),
         ]);
 
+        AuditLogger::log(
+            $user->id,
+            'Login',
+            'تم تسجيل دخول المستخدم بنجاح'
+        );
+
         return $this->success([
-            'user'  => $user,
+            'user' => $user,
             'token' => $token,
         ], 'تم تسجيل الدخول بنجاح');
+
     }
 
     /**
@@ -88,7 +103,14 @@ class AuthController extends Controller
             'last_seen' => now(),
         ]);
 
+        AuditLogger::log(
+            $request->user()->id,
+            'Logout',
+            'تم تسجيل خروج المستخدم بنجاح'
+        );
+
         return $this->success([], 'تم تسجيل الخروج بنجاح');
+
     }
 
     /**
@@ -100,11 +122,11 @@ class AuthController extends Controller
             $user = $request->user();
 
             $validated = $request->validate([
-                'full_name'         => 'sometimes|string|max:100',
-                'password'          => 'sometimes|string|min:6|confirmed',
-                'department_id'     => 'sometimes|nullable|exists:departments,id',
+                'full_name' => 'sometimes|string|max:100',
+                'password' => 'sometimes|string|min:6|confirmed',
+                'department_id' => 'sometimes|nullable|exists:departments,id',
                 'profile_image_url' => 'sometimes|nullable|string',
-                'is_active'         => 'sometimes|boolean',
+                'is_active' => 'sometimes|boolean',
             ]);
 
             if (isset($validated['password'])) {
@@ -114,7 +136,14 @@ class AuthController extends Controller
 
             $user->update($validated);
 
+            AuditLogger::log(
+                $user->id,
+                'Update Profile',
+                'تم تحديث الملف الشخصي بنجاح'
+            );
+
             return $this->success($user, 'تم تحديث الملف الشخصي بنجاح');
+
         });
     }
 }

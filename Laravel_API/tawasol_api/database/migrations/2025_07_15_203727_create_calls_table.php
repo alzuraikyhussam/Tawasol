@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('calls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('caller_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('receiver_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('caller_id')->constrained('users');
+            $table->foreignId('receiver_id')->constrained('users');
             $table->string('call_type', 10);
             $table->string('status', 20)->default('Ringing');
             $table->timestamp('started_at')->nullable();

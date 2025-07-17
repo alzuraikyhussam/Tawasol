@@ -17,12 +17,18 @@ class File extends Model
         'uploaded_at',
     ];
 
-    protected $casts = [
-        'uploaded_at' => 'datetime',
+    protected $dates = [
+        'uploaded_at',
     ];
 
-    public function uploader(): BelongsTo
+    public function uploadedBy()
     {
         return $this->belongsTo(User::class, 'uploaded_by');
+    }
+
+    public function messages()
+    {
+        // في حال تم ربط ملفات برسائل متعددة (عادة ملف واحد مرتبط برسالة واحدة فقط)
+        return $this->hasMany(Message::class, 'file_id');
     }
 }

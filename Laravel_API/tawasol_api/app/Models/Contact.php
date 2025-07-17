@@ -15,8 +15,8 @@ class Contact extends Model
         'created_at',
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime',
+    protected $dates = [
+        'created_at',
     ];
 
     // صاحب قائمة جهات الاتصال

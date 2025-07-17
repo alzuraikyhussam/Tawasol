@@ -17,9 +17,9 @@ class LoginLog extends Model
         'device_info',
     ];
 
-    protected $casts = [
-        'login_time' => 'datetime',
-        'logout_time' => 'datetime',
+    protected $dates = [
+        'login_time',
+        'logout_time',
     ];
 
     public function user(): BelongsTo

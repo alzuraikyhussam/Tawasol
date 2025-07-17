@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Model
+class User extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
+
     protected $fillable = [
         'department_id',
         'username',
@@ -25,7 +30,11 @@ class User extends Model
     protected $casts = [
         'is_active' => 'boolean',
         'is_online' => 'boolean',
-        'last_seen' => 'datetime',
+    ];
+
+    protected $dates = [
+        'last_seen',
+        'created_at',
     ];
 
     // علاقة المستخدم بقسمه
@@ -106,5 +115,20 @@ class User extends Model
     public function auditLogs()
     {
         return $this->hasMany(AuditLog::class);
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class, 'uploaded_by');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function messageStatuses()
+    {
+        return $this->hasMany(MessageStatus::class);
     }
 }

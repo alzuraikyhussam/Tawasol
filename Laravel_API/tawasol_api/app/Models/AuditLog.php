@@ -18,8 +18,8 @@ class AuditLog extends Model
         'created_at',
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime',
+    protected $dates = [
+        'created_at',
     ];
 
     public function user(): BelongsTo

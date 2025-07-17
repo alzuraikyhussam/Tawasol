@@ -20,7 +20,10 @@ class ChatMember extends Model
     protected $casts = [
         'is_admin' => 'boolean',
         'is_muted' => 'boolean',
-        'joined_at' => 'datetime',
+    ];
+
+    protected $dates = [
+        'joined_at',
     ];
 
     public function chat(): BelongsTo

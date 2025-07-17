@@ -16,8 +16,8 @@ class UserSetting extends Model
         'updated_at',
     ];
 
-    protected $casts = [
-        'updated_at' => 'datetime',
+    protected $dates = [
+        'updated_at',
     ];
 
     public function user(): BelongsTo

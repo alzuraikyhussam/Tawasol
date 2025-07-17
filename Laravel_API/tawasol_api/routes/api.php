@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\AuditLogsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CallsController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\FilesController;
+use App\Http\Controllers\LoginLogsController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\MessageStatusController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserSettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -15,9 +21,19 @@ Route::prefix('v1')->group(function () {
         return response()->json(['message' => 'API V1 is working!']);
     });
 
+    Route::get('/time-check', function () {
+        return [
+            'php_time' => date('Y-m-d H:i:s'),
+            'carbon_now' => \Carbon\Carbon::now()->toDateTimeString(),
+            'timezone' => date_default_timezone_get(),
+            'config_app' => config('app.timezone'),
+        ];
+    });
+
     Route::prefix('auth')->group(function () {
         Route::post('/register', [AuthController::class, 'register']);
         Route::post('/login', [AuthController::class, 'login']);
+        Route::put('/profile', [AuthController::class, 'updateProfile']);
     });
 
     // Group routes تحتاج JWT
@@ -25,37 +41,64 @@ Route::prefix('v1')->group(function () {
 
         Route::prefix('auth')->group(function () {
             Route::post('/logout', [AuthController::class, 'logout']);
-            Route::put('/profile', [AuthController::class, 'updateProfile']);
         });
 
-        Route::prefix('users')->group(function () {
-            Route::patch('/{id}/toggle-status', [UserController::class, 'toggleStatus']);
-            Route::patch('/{id}/change-password', [UserController::class, 'changePassword']);
-        });
+        Route::apiResource('users', UserController::class);
+        Route::patch('users/{user}/toggle-status', [UserController::class, 'toggleStatus']);
+        Route::patch('users/{user}/change-password', [UserController::class, 'changePassword']);
 
-        Route::prefix('departments')->group(function () {
-            Route::get('/{id}/users', [DepartmentController::class, 'users']);
-            Route::get('/filter/active', [DepartmentController::class, 'activeDepartments']);
-        });
+        Route::apiResource('departments', DepartmentController::class);
+        Route::get('departments/{id}/users', [DepartmentController::class, 'users']);
+        Route::get('departments/filter/active', [DepartmentController::class, 'activeDepartments']);
 
-        Route::prefix('contacts')->group(function () {
-            Route::post('/check', [ContactsController::class, 'checkContact']);
-            Route::post('/mutual', [ContactsController::class, 'mutualContacts']);
-        });
+        Route::apiResource('contacts', ContactsController::class);
+        Route::post('contacts/check', [ContactsController::class, 'checkContact']);
+        Route::post('contacts/mutual', [ContactsController::class, 'mutualContacts']);
 
-        Route::prefix('chats')->group(function () {
-            Route::post('/{id}/add-member', [ChatsController::class, 'addMember']);
-            Route::post('/{id}/remove-member', [ChatsController::class, 'removeMember']);
-            Route::post('/{id}/leave', [ChatsController::class, 'leaveGroup']);
-            Route::get('/{id}/members', [ChatsController::class, 'members']);
-            Route::get('/my/groups', [ChatsController::class, 'myGroups']);
-        });
+        Route::apiResource('chats', ChatsController::class);
+        Route::post('chats/{id}/add-member', [ChatsController::class, 'addMember']);
+        Route::post('chats/{id}/remove-member', [ChatsController::class, 'removeMember']);
+        Route::post('chats/{id}/leave', [ChatsController::class, 'leaveGroup']);
+        Route::get('chats/{id}/members', [ChatsController::class, 'members']);
+        Route::get('chats/my/groups', [ChatsController::class, 'myGroups']);
 
-        Route::prefix('chats')->group(function () {
+        Route::prefix('messages')->group(function () {
+            Route::get('/{chatId}', [MessagesController::class, 'index']);
+            Route::post('/{chatId}/add-message', [MessagesController::class, 'store']);
+            Route::get('/single/{id}', [MessagesController::class, 'show']);
+            Route::delete('/single/{id}', [MessagesController::class, 'destroy']);
             Route::post('/mark-read/{id}', [MessagesController::class, 'markAsRead']);
             Route::post('/bulk-read/{chatId}', [MessagesController::class, 'bulkMarkAsRead']);
             Route::post('/search/{chatId}', [MessagesController::class, 'search']);
         });
+
+        Route::apiResource('message-status', MessageStatusController::class);
+        Route::patch('message-status/statuses/bulk-update', [MessageStatusController::class, 'bulkUpdate']);
+
+        Route::get('files', [FilesController::class, 'index']);
+        Route::post('files/upload-file', [FilesController::class, 'store']);
+        Route::get('files/{id}', [FilesController::class, 'show']);
+        Route::delete('files/{id}', [FilesController::class, 'destroy']);
+
+        Route::apiResource('calls', CallsController::class);
+        Route::patch('calls/{id}/status', [CallsController::class, 'updateStatus']);
+        Route::get('calls/history/list', [CallsController::class, 'history']);
+
+        Route::prefix('login-logs')->group(function () {
+            Route::get('', [LoginLogsController::class, 'index']);
+            Route::post('/add-login-log', [LoginLogsController::class, 'store']);
+            Route::patch('/logout', [LoginLogsController::class, 'logout']);
+            Route::get('/history', [LoginLogsController::class, 'history']);
+        });
+
+        Route::prefix('audit-logs')->group(function () {
+            Route::get('', [AuditLogsController::class, 'index']);
+            Route::post('/add-audit-log', [AuditLogsController::class, 'store']);
+            Route::get('/{id}', [AuditLogsController::class, 'show']);
+        });
+
+        Route::apiResource('settings', UserSettingsController::class);
+        Route::post('settings/upsert', [UserSettingsController::class, 'upsertSetting']);
 
     });
 

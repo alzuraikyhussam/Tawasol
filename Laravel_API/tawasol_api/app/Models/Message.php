@@ -15,12 +15,13 @@ class Message extends Model
         'sender_id',
         'message_type_id',
         'content',
+        'file_id',
         'file_url',
         'created_at',
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime',
+    protected $dates = [
+        'created_at',
     ];
 
     public function chat(): BelongsTo
@@ -36,6 +37,11 @@ class Message extends Model
     public function messageType(): BelongsTo
     {
         return $this->belongsTo(MessageType::class);
+    }
+
+    public function file()
+    {
+        return $this->belongsTo(File::class, 'file_id');
     }
 
     // حالة الرسائل المتعددة

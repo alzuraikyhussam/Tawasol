@@ -20,10 +20,10 @@ class Call extends Model
         'created_at',
     ];
 
-    protected $casts = [
-        'started_at' => 'datetime',
-        'ended_at' => 'datetime',
-        'created_at' => 'datetime',
+    protected $dates = [
+        'started_at',
+        'ended_at',
+        'created_at',
     ];
 
     public function caller(): BelongsTo

@@ -18,8 +18,8 @@ class MessageStatus extends Model
         'updated_at',
     ];
 
-    protected $casts = [
-        'updated_at' => 'datetime',
+    protected $dates = [
+        'updated_at',
     ];
 
     public function message(): BelongsTo
