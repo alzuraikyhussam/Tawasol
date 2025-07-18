@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Message extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $fillable = [
         'chat_id',
@@ -17,11 +18,6 @@ class Message extends Model
         'content',
         'file_id',
         'file_url',
-        'created_at',
-    ];
-
-    protected $dates = [
-        'created_at',
     ];
 
     public function chat(): BelongsTo

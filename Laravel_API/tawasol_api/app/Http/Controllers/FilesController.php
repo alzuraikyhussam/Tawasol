@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
-use App\Services\AuditLogger;
-use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Traits\ApiResponseTrait;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -73,20 +72,13 @@ class FilesController extends Controller
 
             $savedFile = File::create([
                 'uploaded_by' => $request->user()->id,
-                'file_name' => $fileName,
-                'file_path' => $path,
-                'file_size' => $file->getSize(),
+                'file_name'   => $fileName,
+                'file_path'   => $path,
+                'file_size'   => $file->getSize(),
                 'uploaded_at' => now(),
             ]);
 
-            AuditLogger::log(
-                $request->user()->id,
-                'FileUploaded',
-                'تم رفع الملف: ' . $fileName
-            );
-
             return $this->success($savedFile, 'تم رفع الملف بنجاح', 201);
-
         });
     }
 

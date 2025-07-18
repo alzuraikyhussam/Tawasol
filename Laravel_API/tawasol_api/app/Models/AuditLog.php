@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AuditLog extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $fillable = [
         'user_id',
@@ -15,11 +16,6 @@ class AuditLog extends Model
         'event_details',
         'device_info',
         'ip_address',
-        'created_at',
-    ];
-
-    protected $dates = [
-        'created_at',
     ];
 
     public function user(): BelongsTo

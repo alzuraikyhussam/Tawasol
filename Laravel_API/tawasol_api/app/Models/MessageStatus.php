@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MessageStatus extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $table = 'message_status';
 
@@ -15,11 +16,6 @@ class MessageStatus extends Model
         'message_id',
         'user_id',
         'status',
-        'updated_at',
-    ];
-
-    protected $dates = [
-        'updated_at',
     ];
 
     public function message(): BelongsTo

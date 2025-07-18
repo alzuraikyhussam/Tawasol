@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('setting_key', 100);
             $table->string('setting_value', 255)->nullable();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

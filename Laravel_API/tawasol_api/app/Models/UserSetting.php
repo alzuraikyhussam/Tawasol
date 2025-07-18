@@ -2,21 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserSetting extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $fillable = [
         'user_id',
         'setting_key',
         'setting_value',
-        'updated_at',
-    ];
-
-    protected $dates = [
         'updated_at',
     ];
 

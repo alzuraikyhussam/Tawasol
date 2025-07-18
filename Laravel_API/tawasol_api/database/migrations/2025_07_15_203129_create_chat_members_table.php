@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_muted')->default(false);
             $table->timestamp('joined_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('message_types', function (Blueprint $table) {
             $table->id();
             $table->string('type', 10);
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

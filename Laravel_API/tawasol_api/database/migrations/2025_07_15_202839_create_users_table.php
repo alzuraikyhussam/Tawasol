@@ -21,8 +21,7 @@ return new class extends Migration
             $table->boolean('is_online')->default(false);
             $table->timestamp('last_seen')->nullable();
             $table->text('profile_image_url')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
         });
     }
 

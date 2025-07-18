@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Contact extends Model
 {
-    public $timestamps = false; // فقط created_at غير معتمد تلقائياً في Laravel في هذا الجدول
-
+    use SerializeDate;
+    
     protected $fillable = [
         'owner_id',
         'contact_user_id',
-        'created_at',
-    ];
-
-    protected $dates = [
-        'created_at',
     ];
 
     // صاحب قائمة جهات الاتصال

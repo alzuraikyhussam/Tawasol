@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LoginLog extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $fillable = [
         'user_id',
@@ -15,11 +16,6 @@ class LoginLog extends Model
         'logout_time',
         'ip_address',
         'device_info',
-    ];
-
-    protected $dates = [
-        'login_time',
-        'logout_time',
     ];
 
     public function user(): BelongsTo

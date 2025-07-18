@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('owner_id')->constrained('users');
             $table->foreignId('contact_user_id')->constrained('users');
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

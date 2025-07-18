@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MessageType extends Model
 {
-    public $timestamps = false;
-
+    use SerializeDate;
+    
     protected $fillable = ['type'];
 
     public function messages(): HasMany

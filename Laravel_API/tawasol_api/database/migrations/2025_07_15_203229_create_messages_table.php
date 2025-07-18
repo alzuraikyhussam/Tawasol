@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('file_id')->constrained('files');
             $table->text('content')->nullable();
             $table->text('file_url')->nullable();
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

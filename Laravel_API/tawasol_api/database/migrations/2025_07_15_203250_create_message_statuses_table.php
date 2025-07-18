@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message_statuses', function (Blueprint $table) {
+        Schema::create('message_status', function (Blueprint $table) {
             $table->id();
             $table->foreignId('message_id')->constrained('messages');
             $table->foreignId('user_id')->constrained('users');
             $table->string('status', 20)->default('Sent');
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

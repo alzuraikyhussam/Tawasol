@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Call extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $fillable = [
         'caller_id',
@@ -17,13 +18,6 @@ class Call extends Model
         'started_at',
         'ended_at',
         'duration_seconds',
-        'created_at',
-    ];
-
-    protected $dates = [
-        'started_at',
-        'ended_at',
-        'created_at',
     ];
 
     public function caller(): BelongsTo

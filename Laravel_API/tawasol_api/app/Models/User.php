@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,7 +11,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    use SerializeDate;
     use HasApiTokens, HasFactory, Notifiable;
+
     protected $fillable = [
         'department_id',
         'username',
@@ -29,11 +32,6 @@ class User extends Authenticatable
     protected $casts = [
         'is_active' => 'boolean',
         'is_online' => 'boolean',
-    ];
-
-    protected $dates = [
-        'last_seen',
-        'created_at',
     ];
 
     // علاقة المستخدم بقسمه

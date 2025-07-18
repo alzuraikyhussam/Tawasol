@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('logout_time')->nullable();
             $table->string('ip_address', 50)->nullable();
             $table->string('device_info', 255)->nullable();
+            $table->timestamps();
         });
     }
 

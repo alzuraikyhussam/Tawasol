@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('event_details')->nullable();
             $table->string('device_info', 255)->nullable();
             $table->string('ip_address', 50)->nullable();
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

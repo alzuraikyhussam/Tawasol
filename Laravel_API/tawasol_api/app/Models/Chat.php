@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Chat extends Model
 {
-    public $timestamps = false; // يحتوي فقط على created_at وهو مخصص
+    use SerializeDate;
 
     protected $fillable = [
         'department_id',
@@ -16,11 +17,6 @@ class Chat extends Model
         'group_name',
         'group_description',
         'created_by',
-        'created_at',
-    ];
-
-    protected $dates = [
-        'created_at',
     ];
 
     // القسم المرتبط بالمحادثة

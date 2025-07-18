@@ -2,22 +2,19 @@
 
 namespace App\Models;
 
+use App\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class File extends Model
 {
-    public $timestamps = false;
+    use SerializeDate;
 
     protected $fillable = [
         'uploaded_by',
         'file_name',
         'file_path',
         'file_size',
-        'uploaded_at',
-    ];
-
-    protected $dates = [
         'uploaded_at',
     ];
 

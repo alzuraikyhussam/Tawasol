@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id(); // BIGINT IDENTITY(1,1)
             $table->string('name', 100);
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

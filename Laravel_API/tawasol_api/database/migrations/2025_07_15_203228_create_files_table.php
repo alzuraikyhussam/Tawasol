@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('file_path');
             $table->bigInteger('file_size')->nullable();
             $table->timestamp('uploaded_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
