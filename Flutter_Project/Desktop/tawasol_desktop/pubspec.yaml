@@ -31,12 +31,21 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  flutter_localizations:
+    sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   get: ^4.7.2
+  dio: ^5.8.0+1
+  emoji_picker_flutter: ^2.2.0
+  bitsdojo_window: ^0.1.6
   fluent_ui: ^4.8.7
+  intl: ^0.18.1
+  # record: ^5.0.0
+  just_audio: ^0.9.36
+  path_provider: ^2.0.15
+  loading_indicator: ^3.1.1
 
 dev_dependencies:
   flutter_test:
@@ -77,14 +86,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: 29LT_Kaff
+    - family: LT_Kaff
       fonts:
-        - asset: assets/fonts/29LT_Kaff.ttf
-        - weight: 400
-        - asset: assets/fonts/29LT_Kaff_Medium.ttf
-        - weight: 500
-        - asset: assets/fonts/29LT_Kaff_Semibold.ttf
-        - weight: 600
+        - asset: assets/fonts/LT_Kaff.ttf
+          weight: 400
+        - asset: assets/fonts/LT_Kaff_Medium.ttf
+          weight: 500
+        - asset: assets/fonts/LT_Kaff_Semibold.ttf
+          weight: 600
         
   #   - family: Trajan Pro
   #     fonts:
